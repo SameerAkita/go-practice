@@ -2,16 +2,23 @@ package main
 
 import (
 	"fmt"
-	// "time"
+	"time"
 )
 
-// // order struct
-// type order struct {
-// 	id string
-// 	amount float32
-// 	status string
-// 	createdAt time.Time
-// }
+// order struct
+
+type customer struct {
+	name string
+	phone string
+}
+
+type order struct {
+	id string
+	amount float32
+	status string
+	createdAt time.Time
+	customer
+}
 
 // // receiver type
 // func (o *order) changeStatus(status string) {
@@ -34,11 +41,25 @@ import (
 
 func main() {
 
-	language := struct {
-		name string
-		isGood bool
-	} {"golang", true}
-	fmt.Println(language)
+	newOrder := order{
+		id: "1",
+		amount: 30,
+		status: "received",
+		customer: customer{
+			name: "John",
+			phone: "1234567890",
+		},
+	}
+
+	newOrder.customer.name = "Robin"
+
+	fmt.Println(newOrder)
+
+	// language := struct {
+	// 	name string
+	// 	isGood bool
+	// } {"golang", true}
+	// fmt.Println(language)
 
 	// myOrder := newOrder("1", 30.50, "received")
 
